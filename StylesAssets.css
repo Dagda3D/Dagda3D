@@ -246,7 +246,7 @@ main {
     margin: 20px auto; /* Centered horizontally with vertical spacing */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
-    font-size: 80px; /* Larger font size for prominence */
+    font-size: min(8vw, 80px); /* Larger font size for prominence */
     font-weight: normal; /* Normal font weight for text */
     position: relative; /* Allows absolute positioning of child elements */
     display: flex; /* Using flexbox for positioning */
@@ -272,7 +272,7 @@ main {
     margin: -30px auto 20px; /* Adjusted top margin to move it up by 50px */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
-    font-size: 80px; /* Larger font size for prominence */
+    font-size: min(8vw, 80px); /* Larger font size for prominence */
     font-weight: normal; /* Normal font weight for text */
     position: relative; /* Allows absolute positioning of child elements */
     display: flex; /* Using flexbox for positioning */
@@ -553,9 +553,9 @@ footer {
     padding: 20px;
     border-radius: 15px; /* Optional: rounded corners */
     box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
-    height: 600px; /* Fixed height */
+    height: min(60vw, 600px); /* Fixed height */
     transition: transform 0.3s; /* Smooth transition for hover effects */
-    width: 400px;
+    width: min(70vw, 400px);
     border: 2px solid var(--Medium);
 }
 
@@ -775,5 +775,23 @@ header nav .Subscriberef:hover {
         background-color: #fff; /* Color of the line */
         border-radius: 5px; /* Fully rounded line */
         margin-right: 10px; /* Additional spacing from the text */
+    }
+}
+
+
+
+
+/* Styles for smaller screens */
+@media (max-width: 2200px) {
+    .sub-header {
+        max-height: 200px; /* Adjust height as needed */
+        overflow-y: auto; /* Enable vertical scrolling */
+        padding-right: 55px;
+    }
+
+    /* Optional: Ensure dropdown containers take full width */
+    .dropdown-container {
+        width: 100%;
+        margin-bottom: 10px; /* Adjust margin as needed */
     }
 }
