@@ -538,11 +538,16 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Creates exactly three columns */
     grid-gap: 45px; /* Spacing between grid items */
-    padding: 10px; /* Padding around the entire grid */
-    justify-content: start; /* Aligns items to the start of the main axis */
+    padding: 10px 10px 10px 10px; /* Padding around the entire grid */
+    justify-content: space-evenly; /* Aligns items to the start of the main axis */
     margin-top: 50px;
 }
 
+@media screen and (max-width: 550px) {
+    #content-wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Creates exactly three columns */
+    }
+}
 
 .collection-container {
     background-color: var(--Medium); /* Example background color */
@@ -555,7 +560,7 @@ footer {
     box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
     height: min(60vw, 600px); /* Fixed height */
     transition: transform 0.3s; /* Smooth transition for hover effects */
-    width: min(calc(100% - 120px), 400px);
+
     border: 2px solid var(--Medium);
 }
 
