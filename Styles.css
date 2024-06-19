@@ -1,0 +1,779 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --Darkest:rgb(7, 7, 7);
+    --Medium:rgba(0, 0, 0, 0.5);
+    --Lighter:rgba(61, 61, 61, 0.5);
+    --HeaderRight:#272727;
+    --HeaderLeft:#161616;
+}
+
+/* Ensure that all elements incorporate padding and borders into their width and height */
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Rubik, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft));
+    color: #333;
+}
+
+#left-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px; /* Increased width from previous 60px */
+    height: 100vh; /* Adjusted to viewport height */
+    background-color: var(--Darkest); /* Dark background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* Top padding */
+    z-index: 1000; /* Ensures sidebar is above other elements */
+    border-radius: 0 15px 15px 0; /* Rounded corners on the top-right and bottom-right */
+}
+
+#left-sidebar ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+#left-sidebar li {
+    margin: 20px 0; /* Space between each icon */
+}
+
+#left-sidebar li .icon-container {
+    width: 60px;  /* Size appropriate for horizontal layout */
+    height: 60px;
+    display: flex;
+    flex-direction: column; /* Horizontal layout */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    border-radius: 15px;
+    margin-bottom: 10px;
+    overflow: hidden; /* Hide elements moving out of the box */
+    position: relative;
+    transition: transform 0.3s ease-in-out; /* Smooth scaling transition */
+    top: -20px;
+}
+
+#left-sidebar li:active {
+    transform: scale(0.95) translateY(8px); /* Scale up and move up on hover */
+}
+
+#left-sidebar img {
+    width: 35px; /* Adjust size as needed */
+    transition: transform 0.3s ease-in-out; /* Smooth scale transition */
+    border-radius: 15px; /* Optional, if you want rounded corners on the image */
+}
+
+#left-sidebar li .icon-container:hover img {
+    transform: scale(1.05) translateY(-8px); /* Scale up and move up on hover */
+    transition-delay: 0.1s; /* Slight delay after the rectangle starts moving */
+}
+
+#left-sidebar img:hover {
+    transform: scale(1.1); /* Enlarge the icon slightly on hover */
+}
+
+.rectangle {
+    width: 9px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 3.5px;
+    margin: 2px 1.5px; /* Space between rectangles */
+    position: relative;
+    top: 0; /* Start at initial position */
+    transition: top 0.3s ease-in-out;
+}
+
+.vertical-rectangles {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment for vertical rectangles */
+    justify-content: center; /* Center these rectangles horizontally */
+}
+
+.horizontal-rectangle {
+    width: 30px; /* Width of the horizontal rectangle */
+    height: 3px; /* Height of the rectangle */
+    background-color: #fff;
+    border-radius: 2px; /* Slight rounding at the edges */
+    margin-bottom: -2.5px; /* Space between rectangle and the icon */
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(0); /* Start at initial position */
+}
+
+#left-sidebar li .icon-container:hover .horizontal-rectangle {
+    transform: translateY(-9px); /* Move the rectangle up slightly before the icon */
+    transition-delay: 0s; /* No delay, starts immediately */
+}
+
+#left-sidebar li .icon-container:hover {
+    transform: scale(1.1) translateY(-4px); /* Scale up on hover */
+}
+
+/* On hover, move rectangles up */
+#left-sidebar li .icon-container:hover .rectangle {
+    top: -10px; /* Move up */
+}
+
+/* On unhover, move rectangles back down */
+#left-sidebar li .icon-container .rectangle {
+    top: 0; /* Return to start */
+}
+
+#left-sidebar li .icon-container .icon-title {
+    position: absolute;
+    bottom: -20px; /* Adjust based on the design needs */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Smooth transitions for opacity and position */
+    font-size: 9px;
+    overflow: hidden; /* Prevent text from affecting layout outside the container */
+}
+
+#left-sidebar li .icon-container:hover .icon-title {
+    opacity: 1; /* Show title on hover */
+    bottom: 0px; /* Adjust as needed */
+}
+
+/* Sequential animation timing for rectangles */
+#left-sidebar li .icon-container .rectangle:nth-child(1) {
+    transition-delay: 0s;
+}
+
+#left-sidebar li .icon-container .rectangle:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+#left-sidebar li .icon-container .rectangle:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+/* Header styles */
+header {
+    background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft));
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    top: 0; /* Fix at the top of the page */
+    left: 100px; /* Adjust to align with the sidebar */
+    width: calc(100% - 60px); /* Adjust width based on sidebar width */
+    z-index: 1001; /* Above other content */
+    font-size: 25px; /* Increased font size */
+}
+
+header nav ul li h3 {
+    font-size: 1.2em; /* Adjust font size to match other links */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+/*
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    right: 70px; 
+    height: 3px; 
+    background: orange; 
+    border-radius: 10px; 
+}
+*/
+.header-bar {
+    transition: background-color 1s ease; /* Smooth transition for background color */
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    right: 60px; 
+    height: 3px; 
+    border-radius: 10px; 
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header nav .right-group {
+    display: flex;
+    gap: 10px; /* Adjusts spacing between the right-aligned links */
+    padding-right: 50px;
+}
+
+header nav .right-group li {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment of the text and the separator */
+    gap: 10px; /* Adjusts spacing between the right-aligned links */
+    padding-right: 12px; /* Padding to give some space before the separator */
+    padding-left: 0px; /* Padding to give some space after the separator */
+    position: relative; /* Necessary for positioning the pseudo-element absolutely */
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Main content styles */
+main {
+    margin-top: 120px; /* Adjust based on header + sub-header height */
+    margin-left: 100px; /* Align with the sidebar */
+    padding: 10px;
+    background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft))
+}
+
+.Assetsbanner {
+    background: var(--Lighter); /* Use a pre-defined color variable */
+    width: calc(100% - 20px); /* Adjust width as needed */
+    color: #fff; /* White text color for contrast */
+    padding: 20px; /* Adequate padding around the content */
+    margin: 20px auto; /* Centered horizontally with vertical spacing */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
+    font-size: 80px; /* Larger font size for prominence */
+    font-weight: normal; /* Normal font weight for text */
+    position: relative; /* Allows absolute positioning of child elements */
+    display: flex; /* Using flexbox for positioning */
+    align-items: flex-end; /* Align children to the bottom */
+    justify-content: flex-start; /* Align children to the left */
+    height: 350px; /* Fixed height to ensure vertical space for text */
+}
+
+.Assetsbanner p {
+    margin: 0; /* Remove default margin */
+    padding: 0 10px; /* Padding on the left to keep text from the edge */
+    font-size: 0.8em; /* Relative font size for responsiveness */
+    color: inherit; /* Inherit color from parent for consistency */
+    align-self: flex-end; /* Align this specific item at the flex end */
+}
+
+
+.Collectionsbanner {
+    background: var(--Lighter); /* Use a pre-defined color variable */
+    width: calc(100% - 20px); /* Adjust width as needed */
+    color: #fff; /* White text color for contrast */
+    padding: 20px; /* Adequate padding around the content */
+    margin: -30px auto 20px; /* Adjusted top margin to move it up by 50px */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
+    font-size: 80px; /* Larger font size for prominence */
+    font-weight: normal; /* Normal font weight for text */
+    position: relative; /* Allows absolute positioning of child elements */
+    display: flex; /* Using flexbox for positioning */
+    align-items: flex-end; /* Align children to the bottom */
+    justify-content: flex-start; /* Align children to the left */
+    height: 350px; /* Fixed height to ensure vertical space for text */
+}
+
+
+.Collectionsbanner p {
+    margin: 0; /* Remove default margin */
+    padding: 0 10px; /* Padding on the left to keep text from the edge */
+    font-size: 0.8em; /* Relative font size for responsiveness */
+    color: inherit; /* Inherit color from parent for consistency */
+    align-self: flex-end; /* Align this specific item at the flex end */
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background: var(--Medium);
+    color: #fff;
+}
+
+/* General styling for the sub-header */
+.sub-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the left */
+    gap: 0px; /* Adds spacing between dropdowns */
+    background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft));
+    position: fixed;
+    top: 65px; /* Adjust to fit under the header */
+    left: 100px; /* Align to the right of the sidebar */
+    width: calc(100% - 60px); /* Adjust width based on sidebar width */
+    z-index: 1001; /* Above other content */
+    padding: 10px;
+}
+
+/* Styling the dropdown container and adding vertical lines */
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 0 5px; /* Adjust margin for spacing */
+    padding-left: 5px; /* Add padding to create space for the vertical line */
+    border-left: 2px solid var(--Lighter); /* Add a vertical line */
+}
+
+/* Remove the first dropdown's left border */
+.dropdown-container:first-child {
+    border-left: none;
+}
+
+/* Add an underline under each dropdown title */
+.dropdown-container label {
+    border-bottom: 0px solid #474747; /* Add underline to label */
+    padding-bottom: 0px; /* Add padding below the label */
+    margin-bottom: 0px; /* Add margin below to separate label and dropdown */
+    color: white;
+    margin-left: 5px;
+}
+
+/* Custom styling for the dropdown container */
+.select-container {
+    position: relative; /* Ensure the arrow stays aligned */
+    display: inline-block; /* Keep it inline-block */
+    width: 130px; /* Adjusted width */
+}
+
+/* Select container styling */
+.select-container select {
+    width: 100%; /* Full width of the container */
+    padding: 8px 12px; /* Add padding inside the dropdown */
+    font-size: 1em;
+    background-color: var(--Medium); /* Dark gray background */
+    color: white !important; /* Set the text color to white */
+    border: 0px solid var(--Medium); /* Dark gray border */
+    outline: none; /* Remove outline on focus */
+    appearance: none; /* Remove the default appearance */
+    -webkit-appearance: none; /* Remove appearance in Safari */
+    -moz-appearance: none; /* Remove appearance in Firefox */
+    position: relative; /* Required to position the arrow */
+    cursor: pointer; /* Add pointer cursor for interactivity */
+    border-radius: 10px;
+}
+
+/* Styling the dropdown arrow using the ::after pseudo-element */
+.select-container::after {
+    content: "\25BC"; /* Unicode for downward arrow */
+    position: absolute; /* Absolute positioning for correct alignment */
+    right: 10px; /* Adjust the position */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white;
+    font-size: 1em; /* Adjust arrow size */
+}
+
+/* Style for the dropdown options */
+.select-container select option {
+    background-color: var(--Medium); /* Dark gray to match the select box */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px; /* Add padding for option items */
+}
+
+/* Hover and focus effect for the dropdown */
+.select-container select:hover,
+.select-container select:focus {
+    border-color: var(--Lighter); /* Lighter border on hover and focus */
+    background-color: var(--Lighter);
+    
+}
+
+/* Container for the entire grid */
+#imageContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Increased minimum size */
+    grid-gap: 15px; /* Adjusted gap */
+    padding: 20px;
+    margin-top: -40px;
+    margin-left: 100px;
+}
+
+/*frostedGlass Look */
+.AssetContainer {
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center; /* Center align the children horizontally */
+    width: 100%; /* Make the width flexible */
+    max-width: 340px; /* Adjust max width */
+    aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+    cursor: pointer; /* Make it look clickable */
+    transition: transform 0.2s, border-color 0.2s; /* Add a subtle animation and transition for border */
+    position: relative; /* Allow absolute positioning inside */
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+    background-color: var(--Medium);
+    box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
+    border: 1px solid var(--Medium);
+}
+
+.AssetContainer:hover {
+    border-color: var(--Lighter);
+}
+
+.AssetContainer:active {
+    box-shadow: 10px 10px 15px rgba(0,0,0,0); /* Shadow for depth */
+    top: 10px;
+}
+
+/* Image styles within the asset container */
+.AssetContainer img {
+    width: 180px; /* Set a specific width for the image */
+    height: 180px; /* Set a specific height for the image */
+    border-radius: 15px; /* Adjust the border radius */
+    object-fit: cover; /* Ensure the image covers the available space */
+    margin-bottom: 10px; /* Add some space between the image and caption */
+}
+
+/* Caption container to hold the caption */
+.caption-container {
+    position: absolute; /* Overlay it on the image */
+    bottom: 0px; /* Adjust distance from the bottom */
+    left: 0px; /* Adjust distance from the left */
+    width: calc(100% - 20px); /* Adjust width to fit */
+    display: none; /* Initially hidden */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Show the caption on hover */
+.AssetContainer:hover .caption-container {
+    display: block;
+}
+
+/* Caption styles */
+.asset-caption {
+    position: absolute; /* Make the caption position absolute */
+    bottom: 10px; /* Position the caption 10px from the bottom */
+    left: 10px; /* Position the caption 10px from the left */
+    margin: 0; /* Remove default margin */
+    padding: 5px; /* Add padding around the text */
+    color: white; /* White text color */
+    font-size: 14px; /* Adjust the font size */
+    text-align: left; /* Align the caption to the left */
+    border-radius: 5px; /* Add rounded corners to the caption */
+    display: none; /* Hide the caption by default */
+}
+
+/* Show the caption on hover */
+.AssetContainer:hover .asset-caption {
+    display: block;
+}
+
+/* Sidebar styling */
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px; /* Adjust width as needed */
+    height: 100%; /* Full height */
+    background-color: var(--Darkest); /* Dark background */
+    color: white;
+    padding: 30px; /* Adjust padding as needed */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow */
+    overflow-y: auto;
+    z-index: 2000; /* Ensure the sidebar is on top of all other elements */
+    display: none; /* Initially hidden, will show on trigger */
+    border-radius: 15px 15px 15px 15px ;
+}
+/* Close button inside the sidebar */
+#closeBtn {
+    display: inline-block;
+    background-color: var(--Lighter);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#closeBtn:hover {
+    background-color: var(--Lighter);
+}
+
+/* Container for text inside the sidebar */
+.sidebar-content {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--Lighter);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the asset name is in white */
+.sidebar-content h2 {
+    color: white;
+    margin-top: 0;
+}
+
+/* Sidebar image styles */
+.sidebar-image {
+    width: 100%; /* Ensure the image fills the container width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px; /* Adjust this to control the roundness of the corners */
+    margin-bottom: 10px; /* Add space below the image */
+    object-fit: cover; /* Ensure the image covers the available space */
+}
+
+
+
+/*////////////////////////////////////*/
+#content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Creates exactly three columns */
+    grid-gap: 45px; /* Spacing between grid items */
+    padding: 10px; /* Padding around the entire grid */
+    justify-content: start; /* Aligns items to the start of the main axis */
+    margin-top: 50px;
+}
+
+
+.collection-container {
+    background-color: var(--Medium); /* Example background color */
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 15px; /* Optional: rounded corners */
+    box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
+    height: 600px; /* Fixed height */
+    transition: transform 0.3s; /* Smooth transition for hover effects */
+    width: 400px;
+    border: 2px solid var(--Medium);
+}
+
+.collection-container p {
+    margin: 0;
+    font-size: 24px; /* Larger font size for better readability */
+}
+
+.collection-container:hover {
+    /* border-color: var(--Lighter); */
+    border-color: #466a88;
+ 
+ }
+
+
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.sliding-in {
+    animation: slideInFromBottom 0.5s ease-out forwards;
+}
+
+
+
+
+
+
+
+header nav .Aboutref:hover {
+    color: #9469d0;
+}
+header nav .Assetsref:hover {
+    color: #ffbf00;
+}
+header nav .Blogref:hover {
+    color: #6370af;
+}
+header nav .Signinref:hover {
+    color: #59aa60
+}
+header nav .Subscriberef:hover {
+    color: #68bbdc;
+}
+
+
+
+
+
+
+
+
+.cube {
+    width: 20px;
+    height: 20px;
+    border-radius: 3.5px;
+    position: relative; /* Make sure position is relative to handle 'top' property */
+    transition: top 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+
+
+/* Initial positions for each cube */
+.icon-container .cube-rectangles .cube:nth-child(1) {
+    width: 18px;
+    height: 18px;
+    top: 12px; /* Start at initial position for the first cube */
+    left: 8px;
+    transition-delay: 0s;
+
+}
+
+.icon-container .cube-rectangles .cube:nth-child(2) {
+    width: 26px;
+    height: 26px;
+    top: 10px; /* Start at initial position for the third cube */
+    left: 0px;
+    transition-delay: 0.1s;
+    border: 3px solid white;
+    border-radius: 7px;
+}
+
+.icon-container .cube-rectangles .cube:nth-child(3) {
+    width: 32px;
+    height: 32px;
+    top: -26px; /* Start at initial position for the second cube */
+    left: 5px;
+    transition-delay: 0.2s;
+    border: 3px solid #ffbf00;
+    background-color: white;
+    border-radius: 9px;
+}
+
+
+
+/* On hover, move rectangles up */
+.icon-container:hover .cube-rectangles .cube:nth-child(1) {
+    top: 0px; /* Move the first cube up */
+}
+
+.icon-container:hover .cube-rectangles .cube:nth-child(2) {
+    top: -6px; /* Move the second cube up */
+    left: 8px;
+}
+
+.icon-container:hover .cube-rectangles .cube:nth-child(3) {
+    top: -28px; /* Move the third cube up */
+    left: -4px;
+}
+
+
+
+
+
+
+
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    color: white;
+    height: 40px;
+    padding-right: 40px;
+}
+
+.menu-toggle span {
+    font-size: 30px;
+    left: 100px;
+}
+
+/* When header is condensed */
+@media screen and (max-width: 950px) {
+    .right-group {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft));
+        width: calc(100% - 40px);
+        top: 75px; /* Adjust this value to match your header height */
+        left: 0;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1000;
+        border-radius: 0 0 25px 25px;
+    }
+
+    /* Ensure header or parent elements do not interfere */
+    header, nav {
+    z-index: 1010; /* Ensure header/nav has a higher z-index if necessary */
+    }  
+
+    .right-group.visible {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul li a {
+        top: 0px;
+        display: block;
+        width: 100%;
+        text-align: center; /* Center the text */
+        position: relative; /* Ensure pseudo-elements are positioned correctly */
+    }
+
+    .right-group li {
+        position: relative;
+    }
+
+    /*underlines*/
+    header nav .right-group li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 150px;
+        height: 2px;
+        background-color: #efefef;
+        transform: translateX(-50%);
+    }
+}
+
+/* When header is full */
+@media screen and (min-width: 951px) {
+    .right-group {
+        display: flex !important; /* Ensure it's visible */
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    nav ul li a {
+        display: inline;
+        border-bottom: none;
+        width: auto;
+    }
+
+    header nav .right-group li:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -10px; /* Moves the line 10px to the left of the right edge */
+        height: 1em; /* Match the approximate height of the text */
+        width: 2px; /* Width of the line */
+        background-color: #fff; /* Color of the line */
+        border-radius: 5px; /* Fully rounded line */
+        margin-right: 10px; /* Additional spacing from the text */
+    }
+}

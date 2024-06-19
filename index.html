@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website</title>
+    <link rel="stylesheet" href="StylesHome.css">
+    <script src="ObjectLoop.js"></script>
+    <script src="objectList.js"></script>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <ul>
+                <li class="left">
+                    <h3><a href="index.html"><img src="./Icons/DagdaLogoClear.png" alt="Image" style="width: 45px; height: 45px; margin-right: 5px; margin-top: -5px; vertical-align: middle;">Dagda</a></h3>
+                </li>
+                <!-- Button for toggling the dropdown menu -->
+                <li class="menu-toggle" id="menu-toggle"><span>&#9776;</span></li>
+                <div class="right-group" id="right-group">
+                    <li><a class="Aboutref" href="About.html">About</a></li>
+                    <li><a class="Assetsref" href="Assets.html">Assets</a></li>
+                    <li><a class="Blogref" href="Blog.html">Blog</a></li>
+                    <li><a class="Signinref" href="Signin.html">Sign in</a></li>
+                    <li><a class="Subscriberef" href="Subscribe.html">Subscribe</a></li>
+                </div>
+            </ul>
+        </nav>
+        <div class="header-bar"></div>
+        <script>
+            // Function to set the header's background color
+            function setBackgroundColor(color) {
+                const header = document.querySelector('.header-bar');
+                header.style.backgroundColor = color;
+            }
+            
+            // Function to save the current color
+            function saveCurrentColor(color) {
+                localStorage.setItem('prevColor', color);
+            }
+            
+            // On document load
+            document.addEventListener('DOMContentLoaded', function() {
+                const prevColor = localStorage.getItem('prevColor');
+                const newColor = '#fff'; // New color for the current page, change as needed
+            
+                // If there's a previous color saved, use it as the initial color
+                if (prevColor) {
+                    setBackgroundColor(prevColor);
+                    // After a short delay, transition to the new color
+                    setTimeout(() => setBackgroundColor(newColor), 50);
+                } else {
+                    // No previous color, set the current page color
+                    setBackgroundColor(newColor);
+                }
+            
+                // Before the window unloads, save the current color
+                window.addEventListener('beforeunload', function() {
+                    saveCurrentColor(newColor);
+                });
+            });
+            </script>
+    </header>
+    <main>
+        <div class="banner">
+            <p>Welcome to Dagda</p>
+            <p></p>
+        </div>
+        <div class="button-container">
+            <a style="background-color: #ffbf00;" href="Assets.html" class="rounded-button">Assets</a>
+            <a style="background-color: #6370af;" href="Blog.html" class="rounded-button">Blog</a>
+            <a style="background-color: #59aa60;" href="Purchased.html" class="rounded-button">Purchased</a>
+            <a style="background-color: #c95151;" href="Liked.html" class="rounded-button">Liked</a>
+        </div>
+        <div id="content-wrapper">
+            <!-- Featured collections will be added here dynamically -->
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const featuredCollectionsContainer = document.getElementById('content-wrapper');
+                if (featuredCollectionsContainer) {
+                    displayFeaturedCollections(featuredCollectionsContainer);
+                }
+
+                // Toggle menu visibility on small screens
+                const menuToggle = document.getElementById('menu-toggle');
+                const rightGroup = document.getElementById('right-group');
+                const header = document.getElementById('header');
+
+                header.style.borderRadius = '0 0 25px 25px';
+                rightGroup.style.display = 'none'; // Ensure menu is hidden by default
+    
+                menuToggle.addEventListener('click', function() {
+                    if (rightGroup.style.display === 'none' || rightGroup.style.display === '') {
+                        rightGroup.style.display = 'block';
+                        header.style.borderRadius = '0px';
+                    } else {
+                        rightGroup.style.display = 'none';
+                        header.style.borderRadius = '0 0 25px 25px';
+                    }
+                });
+            });
+         
+            function displayFeaturedCollections(container) {
+    // Create an array of unique collections
+    const collections = new Map();
+    assetMap.forEach(asset => {
+        if (!collections.has(asset.Collection)) {
+            collections.set(asset.Collection, asset);
+        }
+    });
+
+    // Convert the Map of unique collections to an Array and shuffle it
+    const shuffledCollections = Array.from(collections.values());
+    shuffleArray(shuffledCollections);
+
+    // Select the first three collections from the shuffled array
+    const selectedCollections = shuffledCollections.slice(0, 3);
+
+    // Clear previous contents if any
+    container.innerHTML = '';
+
+    // Create HTML for each selected collection and append it
+    selectedCollections.forEach(asset => {
+        const collectionHTML = createCollectionHTML(asset);
+        container.appendChild(collectionHTML);
+    });
+}
+
+// Function to shuffle an array (Fisher-Yates shuffle algorithm)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function createCollectionHTML(asset) {
+    const a = document.createElement('a');
+    a.href = `assets.html?collection=${encodeURIComponent(asset.Collection)}`;
+    a.classList.add('collection-container', 'sliding-in'); // Add animation class
+
+    const div = document.createElement('div');
+    div.className = 'collection';
+    div.innerHTML = `
+        <h3>${asset.Collection}</h3>
+    `;
+
+    a.appendChild(div);
+
+    a.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default navigation
+        const collectionClicked = asset.Collection;
+        saveClickedCollection(() => {
+            window.location.href = a.href; // Navigate to the URL
+        }, collectionClicked);
+    });
+
+    return a;
+}
+
+    function saveClickedCollection(callback, collectionClicked) {
+        localStorage.setItem('ClickedCollection', collectionClicked);
+        callback();
+    }
+
+    </script>
+
+
+
+    </main>
+    <footer>
+        <p>&copy; 2024 Simple Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

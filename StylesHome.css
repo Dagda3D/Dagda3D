@@ -1,0 +1,351 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --Darkest:rgb(7, 7, 7);
+    --Medium:rgba(0, 0, 0, 0.5);
+    --Lighter:rgba(61, 61, 61, 0.5);
+    --HeaderRight:#272727;
+    --HeaderLeft:#161616;
+}
+
+/* Ensure that all elements incorporate padding and borders into their width and height */
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Rubik, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft));
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background: var(--Darkest);
+    padding: 10px 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    position: fixed;
+    top: 0; /* Fix at the top of the page */
+    left: 0px; /* Adjust to align with the sidebar */
+    width: calc(100%); /* Adjust width based on sidebar width */
+    z-index: 1001; /* Above other content */
+    font-size: 25px; /* Increased font size */
+    border-radius: 0 0 25px 25px;
+}
+
+header nav ul li h3 {
+    font-size: 1.2em; /* Adjust font size to match other links */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    color: #fff;
+}
+/*
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 5px; 
+    left: 20px; 
+    right: 30px; 
+    height: 3px; 
+    background: #fff; 
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+*/
+
+.header-bar {
+    transition: background-color 1s ease; /* Smooth transition for background color */
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    right: 20px; 
+    height: 3px; 
+    border-radius: 10px; 
+    margin-bottom: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header nav .right-group {
+    display: flex;
+    gap: 10px; /* Adjusts spacing between the right-aligned links */
+    padding-right: 10px;
+}
+
+header nav .right-group li {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment of the text and the separator */
+    gap: 10px; /* Adjusts spacing between the right-aligned links */
+    padding-right: 12px; /* Padding to give some space before the separator */
+    padding-left: 0px; /* Padding to give some space after the separator */
+    position: relative; /* Necessary for positioning the pseudo-element absolutely */
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Main content styles */
+main {
+    margin-top: 120px; /* Adjust based on header + sub-header height */
+    margin-left: 0px; /* Align with the sidebar */
+    padding: 10px;
+    background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft))
+}
+
+.banner {
+    background: var(--Lighter); /* Use a pre-defined color variable */
+    width: calc(100% - 40px); /* Adjusted width for responsiveness */
+    color: #fff; /* White text color for contrast */
+    text-align: center; /* Center the text horizontally */
+    padding: 150px 20px; /* Top and bottom padding of 150px and horizontal padding of 20px */
+    margin: 20px auto; /* Center the banner horizontally with some vertical margin */
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.5); /* Shadow for depth (adjusted opacity) */
+    font-size: 6vw; /* Responsive font size based on viewport width */
+    font-weight: normal; /* Bold font weight for the text */
+    height: 500px;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.banner p {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Button container styles */
+.button-container {
+    text-align: center; /* Center-aligns all buttons */
+    padding: 0px; /* Padding around the buttons */
+    display: flex; /* Uses flexbox to layout buttons */
+    justify-content: space-between; /* Distributes space evenly between buttons */
+    width: calc(100% - 20px); /* Same width adjustment as banner */
+    margin: 0px auto; /* Adjusts margin to align with banner style */
+}
+
+/* Styles for each button */
+.rounded-button {
+    color: #fff; /* Text color */
+    text-decoration: none; /* Removes underline from links */
+    padding: 15px 10px; /* Vertical padding */
+    flex: 1; /* Allows each button to grow and fill the space */
+    margin: 0 10px; /* Margin between buttons */
+    text-align: center; /* Ensures text is centered within each button */
+    border-radius: 25px; /* Rounded corners to match the banner */
+    font-size: min(3.5vw, 30px); /* Adjusted font size for better readability */
+    font-weight: normal; /* Normal font weight as in banner */
+    box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    border-radius: min(4vw, 25px);
+}
+
+.rounded-button:hover {
+    transform: translateY(-5px); /* Slight raise effect on hover */
+    box-shadow: 0px 15px 20px rgba(0,0,0,1); /* Shadow for depth */
+}
+
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background: var(--Medium);
+    color: #fff;
+}
+
+
+#content-wrapper {
+    display: flex;
+    justify-content: space-evenly; /* Even spacing between children */
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    padding: 10px 10px; /* Padding around the entire grid */
+    margin-top: 50px;
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.collection-container {
+    background-color: var(--Medium); /* Example background color */
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 15px; /* Optional: rounded corners */
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1); /* Adjusted shadow for depth, less intense */
+    height: 50vw; /* Fixed height */
+    transition: transform 0.3s, border-color 0.3s ease; /* Smooth transition for hover effects, including border color */
+    flex: 0 1 900px; /* Flex-grow, Flex-shrink, Flex-basis */
+    margin: 0 10px; /* Margin on left and right for spacing between containers */
+    border: 2px solid var(--Medium); /* Ensure there is a visible border */
+    box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
+    font-size: 1.7vw; /* Responsive font size based on viewport width */
+}
+
+.collection-container p {
+    margin: 0;
+    padding: 0;
+}
+
+.collection-container:hover {
+   /* border-color: var(--Lighter); */
+   border-color: #466a88;
+
+}
+
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.sliding-in {
+    animation: slideInFromBottom 0.5s ease-out forwards;
+}
+
+
+
+
+
+header nav .Aboutref:hover {
+    color: #9469d0;
+}
+header nav .Assetsref:hover {
+    color: #ffbf00;
+}
+header nav .Blogref:hover {
+    color: #6370af;
+}
+header nav .Signinref:hover {
+    color: #59aa60
+}
+header nav .Subscriberef:hover {
+    color: #68bbdc;
+}
+
+
+
+
+
+
+a.collection-container {
+    text-decoration: none;
+}
+
+
+
+
+
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    color: white;
+    height: 40px;
+}
+
+.menu-toggle span {
+    font-size: 30px;
+}
+
+/* When header is condensed */
+@media screen and (max-width: 850px) {
+    .right-group {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: var(--Darkest);
+        width: 100%;
+        top: 75px; /* Adjust this value to match your header height */
+        left: 0;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 0 0 25px 25px;
+    }
+
+    .right-group.visible {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul li a {
+        top: 0px;
+        display: block;
+        width: 100%;
+        text-align: center; /* Center the text */
+        position: relative; /* Ensure pseudo-elements are positioned correctly */
+    }
+
+    .right-group li {
+        position: relative;
+    }
+
+    /*underlines*/
+    header nav .right-group li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 150px;
+        height: 2px;
+        background-color: #efefef;
+        transform: translateX(-50%);
+    }
+}
+
+/* When header is full */
+@media screen and (min-width: 851px) {
+    .right-group {
+        display: flex !important; /* Ensure it's visible */
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    nav ul li a {
+        display: inline;
+        border-bottom: none;
+        width: auto;
+    }
+
+    header nav .right-group li:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -10px; /* Moves the line 10px to the left of the right edge */
+        height: 1em; /* Match the approximate height of the text */
+        width: 2px; /* Width of the line */
+        background-color: #fff; /* Color of the line */
+        border-radius: 5px; /* Fully rounded line */
+        margin-right: 10px; /* Additional spacing from the text */
+    }
+}
