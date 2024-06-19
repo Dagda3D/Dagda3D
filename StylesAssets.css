@@ -555,7 +555,7 @@ footer {
     box-shadow: 0px 10px 15px rgba(0,0,0,1); /* Shadow for depth */
     height: min(60vw, 600px); /* Fixed height */
     transition: transform 0.3s; /* Smooth transition for hover effects */
-    width: min(70vw, 400px);
+    width: min(calc(100% - 120px), 400px);
     border: 2px solid var(--Medium);
 }
 
@@ -784,6 +784,7 @@ header nav .Subscriberef:hover {
 /* Styles for smaller screens */
 @media (max-width: 2200px) {
     .sub-header {
+
         max-height: 200px; /* Adjust height as needed */
         overflow-y: auto; /* Enable vertical scrolling */
         padding-right: 55px;
