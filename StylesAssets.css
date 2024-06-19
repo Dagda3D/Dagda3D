@@ -403,6 +403,35 @@ footer {
     margin-left: 100px;
 }
 
+@media screen and (max-width: 550px) {
+    #imageContainer {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Creates exactly three columns */
+    }
+    /* Show the caption*/
+    .AssetContainer .caption-container {
+       display: block;
+    }
+
+    /* Caption styles */
+    .asset-caption {
+        position: absolute; /* Make the caption position absolute */
+        bottom: 10px; /* Position the caption 10px from the bottom */
+        left: 10px; /* Position the caption 10px from the left */
+        margin: 0; /* Remove default margin */
+        padding: 5px; /* Add padding around the text */
+        color: white; /* White text color */
+        font-size: 14px; /* Adjust the font size */
+        text-align: left; /* Align the caption to the left */
+        border-radius: 5px; /* Add rounded corners to the caption */
+        display: none; /* Hide the caption by default */
+    }
+
+    /* Show the caption */
+    .AssetContainer .asset-caption {
+        display: block;
+    }
+}
+
 /*frostedGlass Look */
 .AssetContainer {
     display: flex;
