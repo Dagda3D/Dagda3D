@@ -42,6 +42,39 @@
         </ul>
     </div>
 
+    <div id="bottom-sidebar">
+        <ul>
+            <li>
+                <a id="assets-link1">
+                    <div class="icon-container" style="background-color: #ffbf00;">
+                        <div class="cube-rectangles">
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                        </div>
+                        <p class="icon-title">Assets</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a id="collections-link1" style="text-decoration: none; color: inherit;">
+                <div class="icon-container" style="background-color: #466a88;">
+                    <div class="vertical-rectangles">
+                    <!-- Replace icon with rectangles -->
+                    <div class="rectangle"></div>
+                    <div class="rectangle"></div>
+                    <div class="rectangle"></div>
+                    </div>
+                    <p class="icon-title">Collections</p> <!-- Title to appear on hover -->
+                </div>
+                </a>
+            </li>
+            <li><div class="icon-container" style="background-color: #684386;"><div class="horizontal-rectangle"></div><img src="icons/Box.png" alt="Assets" title="Assets"><p class="icon-title">Free</p></div></li>
+            <li><div class="icon-container" style="background-color: #59aa60;"><img src="icons/Check.png" alt="Contact" title="Contact"><p class="icon-title">Purchased</p></div></li>
+            <li><div class="icon-container" style="background-color: #c95151;"><img src="icons/Heart.png" alt="Settings" title="Settings"><p class="icon-title">Liked</p></div></li>
+        </ul>
+    </div>
+
     <header>
         <nav>
             <ul>
@@ -238,9 +271,25 @@
                     displayCollections(assetMap); // Assuming assetMap is defined in one of your scripts
                 });
             }
+            const collectionsButton1 = document.getElementById('collections-link1');
+            if (collectionsButton1) {
+                collectionsButton1.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the link from navigating
+                    clearContent('#content-wrapper'); // Clear collections before displaying new ones
+                    displayCollections(assetMap); // Assuming assetMap is defined in one of your scripts
+                });
+            }
             const assetsButton = document.getElementById('assets-link');
             if (assetsButton) {
                 assetsButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    clearContent('#content-wrapper');
+                    setCollectionAndReloadAssets("Any");
+                })
+            }
+            const assetsButton1 = document.getElementById('assets-link1');
+            if (assetsButton1) {
+                assetsButton1.addEventListener('click', function(event) {
                     event.preventDefault();
                     clearContent('#content-wrapper');
                     setCollectionAndReloadAssets("Any");

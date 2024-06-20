@@ -49,13 +49,13 @@ body {
 }
 
 #left-sidebar li .icon-container {
-    width: 60px;  /* Size appropriate for horizontal layout */
+    width: 60px;
     height: 60px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column; /* Horizontal layout */
     justify-content: center; /* Center items horizontally */
     align-items: center; /* Center items vertically */
-    border-radius: 15px;
     margin-bottom: 10px;
     overflow: hidden; /* Hide elements moving out of the box */
     position: relative;
@@ -68,9 +68,9 @@ body {
 }
 
 #left-sidebar img {
-    width: 35px; /* Adjust size as needed */
     transition: transform 0.3s ease-in-out; /* Smooth scale transition */
     border-radius: 15px; /* Optional, if you want rounded corners on the image */
+    width: 35px; /* Adjust size as needed */
 }
 
 #left-sidebar li .icon-container:hover img {
@@ -166,8 +166,6 @@ header {
     text-align: center;
     position: fixed;
     top: 0; /* Fix at the top of the page */
-    left: 100px; /* Adjust to align with the sidebar */
-    width: calc(100% - 60px); /* Adjust width based on sidebar width */
     z-index: 1001; /* Above other content */
     font-size: 25px; /* Increased font size */
 }
@@ -177,18 +175,7 @@ header nav ul li h3 {
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
 }
-/*
-header::after {
-    content: "";
-    position: absolute;
-    bottom: 5px;
-    left: 20px;
-    right: 70px; 
-    height: 3px; 
-    background: orange; 
-    border-radius: 10px; 
-}
-*/
+
 .header-bar {
     transition: background-color 1s ease; /* Smooth transition for background color */
     content: "";
@@ -233,7 +220,6 @@ header nav ul li a {
 /* Main content styles */
 main {
     margin-top: 120px; /* Adjust based on header + sub-header height */
-    margin-left: 100px; /* Align with the sidebar */
     padding: 10px;
     background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft))
 }
@@ -311,8 +297,6 @@ footer {
     background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft));
     position: fixed;
     top: 65px; /* Adjust to fit under the header */
-    left: 100px; /* Align to the right of the sidebar */
-    width: calc(100% - 60px); /* Adjust width based on sidebar width */
     z-index: 1001; /* Above other content */
     padding: 10px;
 }
@@ -400,7 +384,6 @@ footer {
     grid-gap: 15px; /* Adjusted gap */
     padding: 20px;
     margin-top: -40px;
-    margin-left: 100px;
 }
 
 @media screen and (max-width: 550px) {
@@ -828,5 +811,227 @@ header nav .Subscriberef:hover {
     .dropdown-container {
         width: 100%;
         margin-bottom: 10px; /* Adjust margin as needed */
+    }
+}
+
+
+
+
+
+/*              bottom sidebar           */
+/* Basic styles for the bottom sidebar */
+#bottom-sidebar {
+    position: fixed; /* Fix the sidebar to the bottom */
+    bottom: 0; /* Align it to the bottom of the page */
+    width: 100%; /* Full width of the viewport */
+    background: var(--Darkest); /* Background color */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-radius: 25px 25px 0 0; /* Rounded top corners */
+    padding: 10px 0; /* Padding for top and bottom */
+    height: 100px;
+}
+
+#bottom-sidebar ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0px; /* Remove default padding */
+    margin: 0px; /* Remove default margin */
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-around; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+}
+
+#bottom-sidebar li {
+    flex: 1; /* Equal width for each item */
+    text-align: center; /* Center the content */
+}
+
+#bottom-sidebar .icon-container {
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Column layout */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    padding: 10px; /* Padding inside each icon container */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+#bottom-sidebar .icon-container:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+#bottom-sidebar .icon-title {
+    margin-top: 5px; /* Space above the title */
+    font-size: 0.9em; /* Slightly smaller font size */
+    color: #fff; /* White text */
+}
+
+/* Custom styles for each icon container */
+#bottom-sidebar #assets-link .icon-container { background-color: #ffbf00; }
+#bottom-sidebar #collections-link .icon-container { background-color: #466a88; }
+#bottom-sidebar .icon-container img {
+    width: 30px; /* Image width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+#bottom-sidebar li .icon-container:hover .horizontal-rectangle {
+    transform: translateY(-9px); /* Move the rectangle up slightly before the icon */
+    transition-delay: 0s; /* No delay, starts immediately */
+}
+
+#bottom-sidebar li .icon-container:hover {
+    transform: scale(1.1) translateY(-4px); /* Scale up on hover */
+}
+
+/* On hover, move rectangles up */
+#bottom-sidebar li .icon-container:hover .rectangle {
+    top: -10px; /* Move up */
+}
+
+/* On unhover, move rectangles back down */
+#bottom-sidebar li .icon-container .rectangle {
+    top: 0; /* Return to start */
+}
+
+#bottom-sidebar li .icon-container .icon-title {
+    position: absolute;
+    bottom: -20px; /* Adjust based on the design needs */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Smooth transitions for opacity and position */
+    font-size: 9px;
+    overflow: hidden; /* Prevent text from affecting layout outside the container */
+}
+
+#bottom-sidebar li .icon-container:hover .icon-title {
+    opacity: 1; /* Show title on hover */
+    bottom: 0px; /* Adjust as needed */
+}
+
+/* Sequential animation timing for rectangles */
+#bottom-sidebar li .icon-container .rectangle:nth-child(1) {
+    transition-delay: 0s;
+}
+
+#bottom-sidebar li .icon-container .rectangle:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+#bottom-sidebar li .icon-container .rectangle:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+#bottom-sidebar ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+#bottom-sidebar li {
+    margin: 20px 0; /* Space between each icon */
+}
+
+#bottom-sidebar li .icon-container {
+    width: 50px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column; /* Horizontal layout */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 10px;
+    overflow: hidden; /* Hide elements moving out of the box */
+    position: relative;
+    transition: transform 0.3s ease-in-out; /* Smooth scaling transition */
+    top: -10px;
+    left: 0px;
+    margin: 10px;
+}
+
+#bottom-sidebar li:active {
+    transform: scale(0.95) translateY(8px); /* Scale up and move up on hover */
+}
+
+#bottom-sidebar img {
+    transition: transform 0.3s ease-in-out; /* Smooth scale transition */
+    border-radius: 15px; /* Optional, if you want rounded corners on the image */
+    width: 35px; /* Adjust size as needed */
+}
+
+#bottom-sidebar li .icon-container:hover img {
+    transform: scale(1.05) translateY(-8px); /* Scale up and move up on hover */
+    transition-delay: 0.1s; /* Slight delay after the rectangle starts moving */
+}
+
+#bottom-sidebar img:hover {
+    transform: scale(1.1); /* Enlarge the icon slightly on hover */
+}
+
+
+
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    #left-sidebar {
+        display: flex; /* Show left sidebar */
+    }
+
+    #content-wrapper {
+        margin-left: 220px; /* Adjust content margin when left sidebar is visible */
+    }
+
+    #bottom-sidebar {
+        display: none; /* Hide bottom sidebar */
+    }
+    /* Header styles */
+    header {
+        left: 100px; /* Adjust to align with the sidebar */
+        width: calc(100% - 60px); /* Adjust width based on sidebar width */
+    }
+    main {
+        margin-left: 100px;
+    }
+    .sub-header {
+        left: 100px; /* Align to the right of the sidebar */
+        width: calc(100% - 60px); /* Adjust width based on sidebar width */
+    }
+    /* Container for the entire grid */
+    #imageContainer {
+        margin-left: 100px;
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+    #left-sidebar {
+        display: none; /* Hide left sidebar */
+    }
+
+    #content-wrapper {
+        margin-left: 0; /* Reset content margin */
+    }
+
+    #bottom-sidebar {
+        display: flex; /* Show bottom sidebar */
+        justify-content: center;
+        
+    }
+    /* Header styles */
+    header {
+        left: 0px; /* Adjust to align with the sidebar */
+        width: calc(100% + 40px); /* Adjust width based on sidebar width */
+    }
+    main {
+        margin-left: 0px;
+    }
+    .sub-header {
+        left: 0px; /* Align to the right of the sidebar */
+        width: calc(100%); /* Adjust width based on sidebar width */
+    }
+    #imageContainer {
+        margin-left: 0px;
     }
 }
