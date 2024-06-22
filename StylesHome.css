@@ -296,7 +296,7 @@ a.collection-container {
     }
 
     nav ul li a {
-        top: 0px;
+        top: -8px;
         display: block;
         width: 100%;
         text-align: center; /* Center the text */
