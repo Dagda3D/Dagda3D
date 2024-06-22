@@ -286,6 +286,7 @@ footer {
     padding: 10px 20px;
     background: var(--Medium);
     color: #fff;
+    margin-top: 100px;
 }
 
 /* General styling for the sub-header */
@@ -329,13 +330,15 @@ footer {
 .select-container {
     position: relative; /* Ensure the arrow stays aligned */
     display: inline-block; /* Keep it inline-block */
-    width: 130px; /* Adjusted width */
 }
 
 /* Select container styling */
 .select-container select {
-    width: 100%; /* Full width of the container */
+    display: inline-block; /* Ensure it scales with the text */
+    min-width: 10ch; /* Minimum width based on character length */
+    width: auto; /* Allow width to adjust based on content */
     padding: 8px 12px; /* Add padding inside the dropdown */
+    padding-right: 30px;
     font-size: 1em;
     background-color: var(--Medium); /* Dark gray background */
     color: white !important; /* Set the text color to white */
@@ -348,6 +351,7 @@ footer {
     cursor: pointer; /* Add pointer cursor for interactivity */
     border-radius: 10px;
 }
+
 
 /* Styling the dropdown arrow using the ::after pseudo-element */
 .select-container::after {
@@ -509,11 +513,14 @@ footer {
     background-color: var(--Lighter);
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px 15px; /* Increased padding for a bigger button */
+    border-radius: 12px;
     cursor: pointer;
     margin: 10px;
+    float: right; /* Align the button to the right */
+    font-size: 1.2em; /* Increase the font size */
 }
+
 
 #closeBtn:hover {
     background-color: var(--Lighter);
@@ -701,12 +708,12 @@ header nav .Subscriberef:hover {
     display: block;
     cursor: pointer;
     color: white;
-    height: 40px;
+    height: 55px;
     padding-right: 40px;
 }
 
 .menu-toggle span {
-    font-size: 30px;
+    font-size: 35px;
     left: 100px;
 }
 
@@ -980,7 +987,7 @@ header nav .Subscriberef:hover {
     }
 
     #content-wrapper {
-        margin-left: 220px; /* Adjust content margin when left sidebar is visible */
+        margin-left: 0px; /* Adjust content margin when left sidebar is visible */
     }
 
     #bottom-sidebar {

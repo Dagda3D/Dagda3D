@@ -111,7 +111,8 @@
                 const prevColor = localStorage.getItem('prevColor');
                 const assetColor = '#ffbf00'; // Color when asset containers are loaded
                 const collectionColor = '#466a88'; // Color when collection containers are loaded
-                const collectionsButton = document.getElementById('collections-link'); // Button for loading collections
+                const collectionsButton = document.getElementById('collections-link'); //Side Button for loading collections
+                const collectionsButton1 = document.getElementById('collections-link1'); //Bottom button for loading collections
         
                 // Initialize the header color
                 setBackgroundColor(prevColor || assetColor);
@@ -126,6 +127,12 @@
                         setBackgroundColor(collectionColor);
                         saveCurrentColor(collectionColor);  // Save the collection color
                     });
+                }
+                if (collectionsButton1) {
+                    collectionsButton1.addEventListener('click', function() {
+                        setBackgroundColor(collectionColor);
+                        saveCurrentColor(collectionColor);
+                    })
                 }
         
                 // Transition to new color after a short delay if prevColor was set
