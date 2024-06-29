@@ -167,7 +167,8 @@ header {
     position: fixed;
     top: 0; /* Fix at the top of the page */
     z-index: 1001; /* Above other content */
-    font-size: 25px; /* Increased font size */
+    font-size: 20px; /* Increased font size */
+    height: 65px;
 }
 
 header nav ul li h3 {
@@ -180,7 +181,7 @@ header nav ul li h3 {
     transition: background-color 1s ease; /* Smooth transition for background color */
     content: "";
     position: absolute;
-    bottom: 5px;
+    bottom: 10px;
     left: 20px;
     right: 60px; 
     height: 3px; 
@@ -200,7 +201,7 @@ header nav ul {
 header nav .right-group {
     display: flex;
     gap: 10px; /* Adjusts spacing between the right-aligned links */
-    padding-right: 50px;
+    padding-right: 40px;
 }
 
 header nav .right-group li {
@@ -238,7 +239,8 @@ main {
     display: flex; /* Using flexbox for positioning */
     align-items: flex-end; /* Align children to the bottom */
     justify-content: flex-start; /* Align children to the left */
-    height: 350px; /* Fixed height to ensure vertical space for text */
+    height: 0px; /* Fixed height to ensure vertical space for text */
+    padding-top: 28.57%;
 }
 
 .Assetsbanner p {
@@ -264,7 +266,8 @@ main {
     display: flex; /* Using flexbox for positioning */
     align-items: flex-end; /* Align children to the bottom */
     justify-content: flex-start; /* Align children to the left */
-    height: 350px; /* Fixed height to ensure vertical space for text */
+    height: 0px; /* Fixed height to ensure vertical space for text */
+    padding-top: 28.57%;
 }
 
 
@@ -297,9 +300,10 @@ footer {
     gap: 0px; /* Adds spacing between dropdowns */
     background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft));
     position: fixed;
-    top: 65px; /* Adjust to fit under the header */
+    top: 60px; /* Adjust to fit under the header */
     z-index: 1001; /* Above other content */
     padding: 10px;
+    height: 70px;
 }
 
 /* Styling the dropdown container and adding vertical lines */
@@ -310,6 +314,7 @@ footer {
     margin: 0 5px; /* Adjust margin for spacing */
     padding-left: 5px; /* Add padding to create space for the vertical line */
     border-left: 2px solid var(--Lighter); /* Add a vertical line */
+    height: 55px;
 }
 
 /* Remove the first dropdown's left border */
@@ -332,36 +337,34 @@ footer {
     display: inline-block; /* Keep it inline-block */
 }
 
-/* Select container styling */
 .select-container select {
     display: inline-block; /* Ensure it scales with the text */
     min-width: 10ch; /* Minimum width based on character length */
     width: auto; /* Allow width to adjust based on content */
     padding: 8px 12px; /* Add padding inside the dropdown */
-    padding-right: 30px;
-    font-size: 1em;
+    padding-right: 2.5em; /* Extra padding for the arrow */
+    font-size: 1em; /* Font size */
     background-color: var(--Medium); /* Dark gray background */
-    color: white !important; /* Set the text color to white */
-    border: 0px solid var(--Medium); /* Dark gray border */
+    color: white; /* Set the text color to white */
+    border: none; /* Remove border */
     outline: none; /* Remove outline on focus */
     appearance: none; /* Remove the default appearance */
     -webkit-appearance: none; /* Remove appearance in Safari */
     -moz-appearance: none; /* Remove appearance in Firefox */
-    position: relative; /* Required to position the arrow */
-    cursor: pointer; /* Add pointer cursor for interactivity */
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    min-width: 130px;
 }
 
-
-/* Styling the dropdown arrow using the ::after pseudo-element */
 .select-container::after {
     content: "\25BC"; /* Unicode for downward arrow */
     position: absolute; /* Absolute positioning for correct alignment */
-    right: 10px; /* Adjust the position */
+    right: 12px; /* Adjust the position */
     top: 50%; /* Center vertically */
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: white;
+    transform: translateY(-50%); /* Center vertically */
+    pointer-events: none; /* Arrow should not capture mouse events */
+    color: white; /* Arrow color */
     font-size: 1em; /* Adjust arrow size */
 }
 
@@ -705,17 +708,23 @@ header nav .Subscriberef:hover {
 
 
 .menu-toggle {
-    display: block;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
     cursor: pointer;
     color: white;
-    height: 55px;
+    height: 30px;
     padding-right: 40px;
+    position: relative; /* Ensure span can be positioned relative to this container */
 }
 
 .menu-toggle span {
     font-size: 35px;
-    left: 100px;
+    margin-left: 100px; /* Adjust left margin for positioning */
+    margin-top: -5px; /* Adjust this value to fine-tune vertical position */
 }
+
+
+
 
 /* When header is condensed */
 @media screen and (max-width: 950px) {
@@ -725,7 +734,7 @@ header nav .Subscriberef:hover {
         position: absolute;
         background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft));
         width: calc(100% - 40px);
-        top: 75px; /* Adjust this value to match your header height */
+        top: 65px; /* Adjust this value to match your header height */
         left: 0;
         box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         z-index: 1000;
@@ -742,19 +751,24 @@ header nav .Subscriberef:hover {
     }
 
     .menu-toggle {
-        display: block;
+        display: flex;
     }
 
-    nav ul li a {
+    .right-group li a {
         top: -8px;
         display: block;
         width: 100%;
         text-align: center; /* Center the text */
         position: relative; /* Ensure pseudo-elements are positioned correctly */
+        right: -20px;
     }
 
     .right-group li {
         position: relative;
+    }
+
+    .left {
+        top: -8px;
     }
 
     /*underlines*/
@@ -836,7 +850,7 @@ header nav .Subscriberef:hover {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
     border-radius: 25px 25px 0 0; /* Rounded top corners */
     padding: 10px 0; /* Padding for top and bottom */
-    height: 100px;
+    height: 80px;
 }
 
 #bottom-sidebar ul {
@@ -877,8 +891,7 @@ header nav .Subscriberef:hover {
 #bottom-sidebar #assets-link .icon-container { background-color: #ffbf00; }
 #bottom-sidebar #collections-link .icon-container { background-color: #466a88; }
 #bottom-sidebar .icon-container img {
-    width: 30px; /* Image width */
-    height: auto; /* Maintain aspect ratio */
+    top: -8px;
 }
 
 #bottom-sidebar li .icon-container:hover .horizontal-rectangle {
@@ -942,8 +955,8 @@ header nav .Subscriberef:hover {
 }
 
 #bottom-sidebar li .icon-container {
-    width: 50px;
-    height: 60px;
+    width: 5px;
+    height: 55px;
     border-radius: 15px;
     display: flex;
     flex-direction: column; /* Horizontal layout */
@@ -953,7 +966,7 @@ header nav .Subscriberef:hover {
     overflow: hidden; /* Hide elements moving out of the box */
     position: relative;
     transition: transform 0.3s ease-in-out; /* Smooth scaling transition */
-    top: -10px;
+    top: -2px;
     left: 0px;
     margin: 10px;
 }

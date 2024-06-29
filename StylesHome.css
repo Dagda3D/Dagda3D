@@ -34,8 +34,9 @@ header {
     left: 0px; /* Adjust to align with the sidebar */
     width: calc(100%); /* Adjust width based on sidebar width */
     z-index: 1001; /* Above other content */
-    font-size: 25px; /* Increased font size */
+    font-size: 20px; /* Increased font size */
     border-radius: 0 0 25px 25px;
+    height: 75px;
 }
 
 header nav ul li h3 {
@@ -62,7 +63,7 @@ header::after {
     transition: background-color 1s ease; /* Smooth transition for background color */
     content: "";
     position: absolute;
-    bottom: 5px;
+    bottom: 10px;
     left: 20px;
     right: 20px; 
     height: 3px; 
@@ -83,7 +84,7 @@ header nav ul {
 header nav .right-group {
     display: flex;
     gap: 10px; /* Adjusts spacing between the right-aligned links */
-    padding-right: 10px;
+    padding-right: 0px;
 }
 
 header nav .right-group li {
@@ -102,7 +103,7 @@ header nav ul li a {
 
 /* Main content styles */
 main {
-    margin-top: 120px; /* Adjust based on header + sub-header height */
+    margin-top: 60px; /* Adjust based on header + sub-header height */
     margin-left: 0px; /* Align with the sidebar */
     padding: 10px;
     background: linear-gradient(to left, var(--HeaderRight), var(--HeaderLeft))
@@ -119,15 +120,18 @@ main {
     box-shadow: 0px 10px 15px rgba(0,0,0,0.5); /* Shadow for depth (adjusted opacity) */
     font-size: 7vw; /* Responsive font size based on viewport width */
     font-weight: normal; /* Bold font weight for the text */
-    height: 500px;
     display: flex; /* Use flexbox */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
+    height: 0px; /* Fixed height to ensure vertical space for text */
+    padding-top: 14.285%;
+    padding-bottom: 14.285%;
 }
 
 .banner p {
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
+    align-items: center;
 }
 
 /* Button container styles */
@@ -191,7 +195,7 @@ footer {
     padding: 10px;
     border-radius: 15px; /* Optional: rounded corners */
     box-shadow: 0px 10px 15px rgba(0,0,0,0.1); /* Adjusted shadow for depth, less intense */
-    height: 50vw; /* Fixed height */
+    height: 40vw; /* Fixed height */
     transition: transform 0.3s, border-color 0.3s ease; /* Smooth transition for hover effects, including border color */
     flex: 0 1 900px; /* Flex-grow, Flex-shrink, Flex-basis */
     margin: 0 10px; /* Margin on left and right for spacing between containers */
@@ -261,15 +265,19 @@ a.collection-container {
 
 
 .menu-toggle {
-    display: block;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
     cursor: pointer;
     color: white;
-    height: 55px;
+    height: 30px;
+    padding-right: 0px;
+    position: relative; /* Ensure span can be positioned relative to this container */
 }
 
 .menu-toggle span {
     font-size: 35px;
-    left: 100px;
+    margin-left: 100px; /* Adjust left margin for positioning */
+    margin-top: -13px; /* Adjust this value to fine-tune vertical position */
 }
 
 /* When header is condensed */
@@ -280,7 +288,7 @@ a.collection-container {
         position: absolute;
         background-color: var(--Darkest);
         width: 100%;
-        top: 75px; /* Adjust this value to match your header height */
+        top: 65px; /* Adjust this value to match your header height */
         left: 0;
         box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         z-index: 1;
@@ -292,15 +300,16 @@ a.collection-container {
     }
 
     .menu-toggle {
-        display: block;
+        display: flex;
     }
 
-    nav ul li a {
+    .right-group li a {
         top: -8px;
         display: block;
         width: 100%;
         text-align: center; /* Center the text */
         position: relative; /* Ensure pseudo-elements are positioned correctly */
+        padding-top: 8px;
     }
 
     .right-group li {
@@ -350,4 +359,124 @@ a.collection-container {
         border-radius: 5px; /* Fully rounded line */
         margin-right: 10px; /* Additional spacing from the text */
     }
+}
+
+
+
+
+.bar {
+    background-color: white;
+    content: "";
+    position: relative;
+    bottom: -30px;
+    left: 20px;
+    right: 20px; 
+    height: 3px; 
+    border-radius: 10px; 
+    margin-bottom: 10px;
+    width: calc(100% - 40px);
+}
+
+
+
+/* Styles for the outer rectangle */
+.collections-header {
+    background: var(--Medium); /* Use a pre-defined color variable */
+    width: calc(100% - 40px); /* Adjusted width for responsiveness */
+    color: #fff; /* White text color for contrast */
+    text-align: center; /* Center the text horizontally */
+    padding: 150px 20px; /* Top and bottom padding of 150px and horizontal padding of 20px */
+    margin: 20px auto; /* Center the banner horizontally with some vertical margin */
+    border-radius: min(3.5vw, 22px);
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.5); /* Shadow for depth (adjusted opacity) */
+    font-size: 7vw; /* Responsive font size based on viewport width */
+    font-weight: normal; /* Bold font weight for the text */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 0px; /* Fixed height to ensure vertical space for text */
+    padding-top: 2%;
+    padding-bottom: 2%;
+    min-height: 55px;
+    margin-top: 65px;
+    margin-bottom: -20px;
+    border: 2px solid var(--Medium); /* Ensure there is a visible border */
+    transition: transform 0.3s, border-color 0.3s ease; /* Smooth transition for hover effects, including border color */
+}
+
+.collections-header:hover {
+    border-color: #466a88;
+    
+    .collectionsHeader-title {
+        transform: scale(1.05) translateY(0px); /* Slight raise effect on hover */
+    }
+    .collectionsHeader-title:hover {
+        transform: scale(1.1) translateY(-2px); /* Slight raise effect on hover */
+        box-shadow: 0px 15px 20px rgba(0,0,0,1); /* Shadow for depth */
+    }
+}
+
+.collectionsHeader-title {
+    background: #466a88; /* Use a pre-defined color variable */
+    width: 29vw; /* Adjusted width for responsiveness */
+    color: #fff; /* White text color for contrast */
+    text-align: center; /* Center the text horizontally */
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.5); /* Shadow for depth (adjusted opacity) */
+    font-size: clamp(16px, 2vw, 32px); /* Responsive font size with min and max limits */
+    font-weight: normal; /* Bold font weight for the text */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 0px; /* Fixed height to ensure vertical space for text */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    border-radius: min(3.5vw, 22px);
+    height: 0px; /* Fixed height to ensure vertical space for text */
+    padding-top: 2%;
+    padding-bottom: 2%;
+    min-height: 55px;
+    min-width: 240px;
+    transition: transform 0.3s, border-color 0.3s ease; /* Smooth transition for hover effects, including border color */
+}
+
+
+
+.rectangle {
+    width: 9px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 3.5px;
+    margin: 2px 1.5px; /* Space between rectangles */
+    position: relative;
+    top: 0; /* Start at initial position */
+    transition: top 0.3s ease-in-out;
+}
+
+.vertical-rectangles {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment for vertical rectangles */
+    justify-content: center; /* Center these rectangles horizontally */
+    padding-right: 15px;
+}
+
+/* On hover, move rectangles up */
+.collectionsHeader-title:hover .rectangle {
+    top: -10px; /* Move up */
+}
+
+/* On unhover, move rectangles back down */
+.collectionsHeader-title .rectangle {
+    top: 0; /* Return to start */
+}
+
+/* Sequential animation timing for rectangles */
+.collections-header .rectangle:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.collections-header .rectangle:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.collections-header .rectangle:nth-child(3) {
+    transition-delay: 0.2s;
 }
