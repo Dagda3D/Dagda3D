@@ -111,12 +111,12 @@ main {
 
 .banner {
     background: var(--Lighter); /* Use a pre-defined color variable */
-    width: calc(100% - 40px); /* Adjusted width for responsiveness */
+    width: calc(100% - 20px); /* Adjusted width for responsiveness */
     color: #fff; /* White text color for contrast */
     text-align: center; /* Center the text horizontally */
     padding: 150px 20px; /* Top and bottom padding of 150px and horizontal padding of 20px */
     margin: 20px auto; /* Center the banner horizontally with some vertical margin */
-    border-radius: 25px; /* Rounded corners */
+    border-radius: 15px; /* Rounded corners */
     box-shadow: 0px 10px 15px rgba(0,0,0,0.5); /* Shadow for depth (adjusted opacity) */
     font-size: 7vw; /* Responsive font size based on viewport width */
     font-weight: normal; /* Bold font weight for the text */
@@ -124,8 +124,8 @@ main {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     height: 0px; /* Fixed height to ensure vertical space for text */
-    padding-top: 14.285%;
-    padding-bottom: 14.285%;
+    padding-top: 22%;
+    padding-bottom: 22%;
 }
 
 .banner p {
@@ -140,7 +140,7 @@ main {
     padding: 0px; /* Padding around the buttons */
     display: flex; /* Uses flexbox to layout buttons */
     justify-content: space-between; /* Distributes space evenly between buttons */
-    width: calc(100% - 20px); /* Same width adjustment as banner */
+    width: calc(100% - 5px); /* Same width adjustment as banner */
     margin: 0px auto; /* Adjusts margin to align with banner style */
 }
 
@@ -150,7 +150,7 @@ main {
     text-decoration: none; /* Removes underline from links */
     padding: 15px 10px; /* Vertical padding */
     flex: 1; /* Allows each button to grow and fill the space equally */
-    margin: 0 10px; /* Margin between buttons */
+    margin: 0 5px; /* Margin between buttons */
     text-align: center; /* Ensures text is centered within each button */
     border-radius: 25px; /* Rounded corners to match the banner */
     font-size: min(3.5vw, 30px); /* Adjusted font size for better readability */
@@ -181,7 +181,7 @@ footer {
     display: flex;
     justify-content: space-evenly; /* Even spacing between children */
     align-items: flex-start; /* Align items at the start of the cross axis */
-    padding: 10px 10px; /* Padding around the entire grid */
+    padding: 10px 0px; /* Padding around the entire grid */
     margin-top: 50px;
     box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
@@ -236,13 +236,13 @@ footer {
 
 
 header nav .Aboutref:hover {
-    color: #9469d0;
+    color: #ff814b;
 }
 header nav .Assetsref:hover {
     color: #ffbf00;
 }
 header nav .Blogref:hover {
-    color: #6370af;
+    color: #6a5da0;
 }
 header nav .Signinref:hover {
     color: #59aa60
@@ -277,7 +277,7 @@ a.collection-container {
 .menu-toggle span {
     font-size: 35px;
     margin-left: 100px; /* Adjust left margin for positioning */
-    margin-top: -13px; /* Adjust this value to fine-tune vertical position */
+    margin-top: -6px; /* Adjust this value to fine-tune vertical position */
 }
 
 /* When header is condensed */
@@ -369,12 +369,12 @@ a.collection-container {
     content: "";
     position: relative;
     bottom: -30px;
-    left: 20px;
+    left: 10px;
     right: 20px; 
     height: 3px; 
     border-radius: 10px; 
     margin-bottom: 10px;
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
 }
 
 
@@ -382,12 +382,12 @@ a.collection-container {
 /* Styles for the outer rectangle */
 .collections-header {
     background: var(--Medium); /* Use a pre-defined color variable */
-    width: calc(100% - 40px); /* Adjusted width for responsiveness */
+    width: calc(100% - 20px); /* Adjusted width for responsiveness */
     color: #fff; /* White text color for contrast */
     text-align: center; /* Center the text horizontally */
     padding: 150px 20px; /* Top and bottom padding of 150px and horizontal padding of 20px */
     margin: 20px auto; /* Center the banner horizontally with some vertical margin */
-    border-radius: min(3.5vw, 22px);
+    border-radius: min(3.5vw, 16px);
     box-shadow: 0px 10px 15px rgba(0,0,0,0.5); /* Shadow for depth (adjusted opacity) */
     font-size: 7vw; /* Responsive font size based on viewport width */
     font-weight: normal; /* Bold font weight for the text */
@@ -395,26 +395,33 @@ a.collection-container {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     height: 0px; /* Fixed height to ensure vertical space for text */
-    padding-top: 2%;
-    padding-bottom: 2%;
-    min-height: 55px;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    min-height: 35px;
     margin-top: 65px;
     margin-bottom: -20px;
-    border: 2px solid var(--Medium); /* Ensure there is a visible border */
+    border: 2px solid; /* Ensure there is a visible border */
+    border-color: var(--Medium);
     transition: transform 0.3s, border-color 0.3s ease; /* Smooth transition for hover effects, including border color */
 }
 
 .collections-header:hover {
-    border-color: #466a88;
-    
-    .collectionsHeader-title {
-        transform: scale(1.05) translateY(0px); /* Slight raise effect on hover */
-    }
-    .collectionsHeader-title:hover {
-        transform: scale(1.1) translateY(-2px); /* Slight raise effect on hover */
-        box-shadow: 0px 15px 20px rgba(0,0,0,1); /* Shadow for depth */
-    }
+    transform: scale(1) translateY(0px); /* Slight raise effect on title hover */
+    border: 2px solid;
+    border-color: var(--Darkest);
 }
+
+.collections-header:hover .collectionsHeader-title:hover {
+    transform: translateY(-5px); /* Slight raise effect on hover */
+    box-shadow: 0px 15px 20px rgba(0,0,0,1); /* Shadow for depth */
+
+}
+
+.collections-header:hover > .collections-header {
+    border-color: #466a88; /* Change border color of header when title is hovered */
+}
+
+
 
 .collectionsHeader-title {
     background: #466a88; /* Use a pre-defined color variable */
@@ -429,13 +436,14 @@ a.collection-container {
     align-items: center; /* Center vertically */
     height: 0px; /* Fixed height to ensure vertical space for text */
     box-sizing: border-box; /* Includes padding and border in the element's total width and height */
-    border-radius: min(3.5vw, 22px);
+    border-radius: min(3.5vw, 16px);
     height: 0px; /* Fixed height to ensure vertical space for text */
-    padding-top: 2%;
-    padding-bottom: 2%;
-    min-height: 55px;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    min-height: 35px;
     min-width: 240px;
     transition: transform 0.3s, border-color 0.3s ease; /* Smooth transition for hover effects, including border color */
+    overflow: hidden;
 }
 
 
@@ -458,25 +466,3 @@ a.collection-container {
     padding-right: 15px;
 }
 
-/* On hover, move rectangles up */
-.collectionsHeader-title:hover .rectangle {
-    top: -10px; /* Move up */
-}
-
-/* On unhover, move rectangles back down */
-.collectionsHeader-title .rectangle {
-    top: 0; /* Return to start */
-}
-
-/* Sequential animation timing for rectangles */
-.collections-header .rectangle:nth-child(1) {
-    transition-delay: 0s;
-}
-
-.collections-header .rectangle:nth-child(2) {
-    transition-delay: 0.1s;
-}
-
-.collections-header .rectangle:nth-child(3) {
-    transition-delay: 0.2s;
-}

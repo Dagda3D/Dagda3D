@@ -240,7 +240,7 @@ main {
     align-items: flex-end; /* Align children to the bottom */
     justify-content: flex-start; /* Align children to the left */
     height: 0px; /* Fixed height to ensure vertical space for text */
-    padding-top: 28.57%;
+    padding-top: 40%;
 }
 
 .Assetsbanner p {
@@ -267,7 +267,7 @@ main {
     align-items: flex-end; /* Align children to the bottom */
     justify-content: flex-start; /* Align children to the left */
     height: 0px; /* Fixed height to ensure vertical space for text */
-    padding-top: 28.57%;
+    padding-top: 40%;
 }
 
 
@@ -621,13 +621,13 @@ footer {
 
 
 header nav .Aboutref:hover {
-    color: #9469d0;
+    color: #ff814b;
 }
 header nav .Assetsref:hover {
     color: #ffbf00;
 }
 header nav .Blogref:hover {
-    color: #6370af;
+    color: #6a5da0;
 }
 header nav .Signinref:hover {
     color: #59aa60
@@ -720,7 +720,7 @@ header nav .Subscriberef:hover {
 .menu-toggle span {
     font-size: 35px;
     margin-left: 100px; /* Adjust left margin for positioning */
-    margin-top: -5px; /* Adjust this value to fine-tune vertical position */
+    margin-top: -6px; /* Adjust this value to fine-tune vertical position */
 }
 
 
@@ -824,7 +824,7 @@ header nav .Subscriberef:hover {
     .sub-header {
 
         max-height: 200px; /* Adjust height as needed */
-        overflow-y: auto; /* Enable vertical scrolling */
+        overflow-y: hidden; /* Enable vertical scrolling */
         padding-right: 55px;
     }
 
@@ -951,11 +951,11 @@ header nav .Subscriberef:hover {
 }
 
 #bottom-sidebar li {
-    margin: 20px 0; /* Space between each icon */
+    margin: 0px 0; /* Space between each icon */
 }
 
 #bottom-sidebar li .icon-container {
-    width: 5px;
+    width: 55px;
     height: 55px;
     border-radius: 15px;
     display: flex;
@@ -968,7 +968,7 @@ header nav .Subscriberef:hover {
     transition: transform 0.3s ease-in-out; /* Smooth scaling transition */
     top: -2px;
     left: 0px;
-    margin: 10px;
+    margin: 5px; /* the actual spacin in between each one*/
 }
 
 #bottom-sidebar li:active {

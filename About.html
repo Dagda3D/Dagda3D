@@ -39,11 +39,10 @@
             function saveCurrentColor(color) {
                 localStorage.setItem('prevColor', color);
             }
-    
             // On document load
             document.addEventListener('DOMContentLoaded', function() {
                 const prevColor = localStorage.getItem('prevColor');
-                const newColor = '#9469d0'; // New color for the current page, change as needed
+                const newColor = '#ff814b'; // New color for the current page, change as needed
     
                 // If there's a previous color saved, use it as the initial color
                 if (prevColor) {
