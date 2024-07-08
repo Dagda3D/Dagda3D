@@ -955,8 +955,8 @@ header nav .Subscriberef:hover {
 }
 
 #bottom-sidebar li .icon-container {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     border-radius: 15px;
     display: flex;
     flex-direction: column; /* Horizontal layout */
